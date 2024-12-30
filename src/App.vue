@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { BaseButton } from '@/components/ui/base-button'
-import { ToggleThemeButton } from '@/components/toggle-theme-button'
+import { TheHeader } from '@/components/the-header'
 </script>
 
 <template>
-  <div>
-    <ToggleThemeButton />
-    Hello
-    <BaseButton>Click me</BaseButton>
-  </div>
+  <TheHeader />
 </template>
