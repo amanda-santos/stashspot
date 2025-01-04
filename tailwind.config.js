@@ -18,6 +18,9 @@ export const theme = {
       '2xl': '1400px',
     },
   },
+  fontFamily: {
+    sans: ['Geist', 'sans-serif'],
+  },
   extend: {
     colors: {
       border: 'hsl(var(--border))',
