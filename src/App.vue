@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { TabsContainer, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { TheHeader } from '@/components/the-header'
 import { ResourceCard } from '@/components/resource-card'
 import { reactive } from 'vue'
@@ -35,15 +36,24 @@ const resources = reactive([
 <template>
   <TheHeader />
 
-  <main class="max-w-screen-2xl p-12">
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <ResourceCard
-        v-for="resource in resources"
-        :key="resource.id"
-        :title="resource.title"
-        :description="resource.description"
-        :url="resource.url"
-      />
-    </section>
+  <main class="max-w-screen-2xl px-12 py-8 mx-auto">
+    <TabsContainer default-value="resources-list">
+      <TabsList>
+        <TabsTrigger value="resources-list">Resources</TabsTrigger>
+        <TabsTrigger value="create-resource">Create a new resource</TabsTrigger>
+      </TabsList>
+      <TabsContent value="resources-list">
+        <section class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <ResourceCard
+            v-for="resource in resources"
+            :key="resource.id"
+            :title="resource.title"
+            :description="resource.description"
+            :url="resource.url"
+          />
+        </section>
+      </TabsContent>
+      <TabsContent value="create-resource">Create new</TabsContent>
+    </TabsContainer>
   </main>
 </template>

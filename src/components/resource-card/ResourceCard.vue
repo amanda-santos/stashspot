@@ -24,7 +24,7 @@ defineProps({
     <CardHeader>
       <CardTitle>{{ title }}</CardTitle>
     </CardHeader>
-    <CardContent class="flex flex-col justify-between min-h-32">
+    <CardContent class="flex flex-col justify-between min-h-32 gap-4">
       <CardDescription>
         {{ description }}
       </CardDescription>
