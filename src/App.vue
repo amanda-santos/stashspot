@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 import { TabsContainer, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { TheHeader } from '@/components/the-header'
 import { ResourceCard } from '@/components/resource-card'
 import ResourceForm from './components/resource-form/ResourceForm.vue'
 import defaultResources from '../default-resources.json'
+import { useLocalStorage } from '@vueuse/core'
 
 type Resource = {
   id: string
@@ -14,12 +15,12 @@ type Resource = {
   url: string
 }
 
-const resources = reactive<Resource[]>(defaultResources)
+const resources = useLocalStorage('stashspot:resources', defaultResources)
 
 const currentTab = ref('resources-list')
 
 const onSubmit = (resource: Resource) => {
-  resources.push(resource)
+  resources.value.push(resource)
   currentTab.value = 'resources-list'
 }
 
@@ -28,8 +29,8 @@ const handleTabChange = (tab: string | number) => {
 }
 
 const handleDeleteResource = (id: string) => {
-  const index = resources.findIndex((resource) => resource.id === id)
-  resources.splice(index, 1)
+  const index = resources.value.findIndex((resource) => resource.id === id)
+  resources.value.splice(index, 1)
 }
 </script>
 
