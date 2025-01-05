@@ -26,6 +26,11 @@ const onSubmit = (resource: Resource) => {
 const handleTabChange = (tab: string | number) => {
   currentTab.value = String(tab)
 }
+
+const handleDeleteResource = (id: string) => {
+  const index = resources.findIndex((resource) => resource.id === id)
+  resources.splice(index, 1)
+}
 </script>
 
 <template>
@@ -49,6 +54,7 @@ const handleTabChange = (tab: string | number) => {
             :title="resource.title"
             :description="resource.description"
             :url="resource.url"
+            @delete="handleDeleteResource(resource.id)"
           />
         </section>
       </TabsContent>

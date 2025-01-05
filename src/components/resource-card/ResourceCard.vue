@@ -7,16 +7,20 @@ import {
   CardTitle,
   CardContent,
   CardDescription,
+  CardFooter,
 } from '@/components/ui/card'
 import { BaseButton } from '@/components/ui/base-button'
 
 import { defineProps } from 'vue'
 
 defineProps({
+  id: String,
   title: String,
   description: String,
   url: String,
 })
+
+defineEmits(['delete'])
 </script>
 
 <template>
@@ -24,21 +28,19 @@ defineProps({
     <CardHeader>
       <CardTitle>{{ title }}</CardTitle>
     </CardHeader>
-    <CardContent class="flex flex-col justify-between min-h-32 gap-4">
-      <CardDescription>
+    <CardContent class="flex flex-col justify-between gap-4 h-16">
+      <CardDescription class="line-clamp-2">
         {{ description }}
       </CardDescription>
-      <BaseButton
-        variant="outline"
-        size="default"
-        class="mt-auto w-fit"
-        :href="url"
-        as="a"
-        target="_blank"
-      >
+    </CardContent>
+    <CardFooter class="flex gap-2">
+      <BaseButton variant="outline" size="default" :href="url" as="a" target="_blank">
         <Icon icon="radix-icons:external-link" />
         Visit
       </BaseButton>
-    </CardContent>
+      <BaseButton variant="destructive" size="icon" @click="$emit('delete')">
+        <Icon icon="tabler:trash" />
+      </BaseButton>
+    </CardFooter>
   </CardContainer>
 </template>
