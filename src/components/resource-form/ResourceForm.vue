@@ -92,6 +92,6 @@ const onSubmit = form.handleSubmit((values) => {
         <FormMessage />
       </FormItem>
     </FormField>
-    <BaseButton type="submit" class="w-fit mt-4">Submit</BaseButton>
+    <BaseButton type="submit" class="w-fit mt-4">Create</BaseButton>
   </form>
 </template>

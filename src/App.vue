@@ -52,6 +52,7 @@ const handleDeleteResource = (id: string) => {
           <ResourceCard
             v-for="resource in resources"
             :key="resource.id"
+            :id="resource.id"
             :title="resource.title"
             :description="resource.description"
             :url="resource.url"

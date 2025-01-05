@@ -24,7 +24,7 @@ defineEmits(['delete'])
 </script>
 
 <template>
-  <CardContainer>
+  <CardContainer data-testid="resource-card">
     <CardHeader>
       <CardTitle>{{ title }}</CardTitle>
     </CardHeader>
@@ -38,7 +38,12 @@ defineEmits(['delete'])
         <Icon icon="radix-icons:external-link" />
         Visit
       </BaseButton>
-      <BaseButton variant="destructive" size="icon" @click="$emit('delete')">
+      <BaseButton
+        variant="destructive"
+        size="icon"
+        @click="$emit('delete')"
+        aria-label="Delete resource"
+      >
         <Icon icon="tabler:trash" />
       </BaseButton>
     </CardFooter>
